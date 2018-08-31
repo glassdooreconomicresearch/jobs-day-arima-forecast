@@ -4,20 +4,26 @@
 # of monthly SA nonfarm payrolls.
 #
 # Andrew Chamberlain, Ph.D.
-# Glassdoor Economic Research (glassdoor.com/research)
-# July 2018
+# Glassdoor Economic Research 
+# Web: glassdoor.com/research
+# ORIGINAL: July 2018
+# LAST UPDATE: August 24, 2018
 
 import pandas as pd
 from statsmodels.tsa.seasonal import seasonal_decompose
 from pyramid.arima import auto_arima
 import os
 
-# Set working directory (add local directory where you've stored data.csv file here).
-os.chdir('/YOUR_DIRECTORY_LOCATION__GOES_HERE/')
+# Set working directory (CHANGE THIS FOR YOUR ENVIRONMENT)
+os.chdir('/Users/andrew.chamberlain/GitHub/jobs-day-arima-forecast')
 
-# Choose starting and dending dates for ARIMA model.
+# UPDATE MONTHLY: Choose starting and dending dates for ARIMA model.
 start = '2010-01-01'
-end = '2018-06-01'
+end = '2018-07-01'
+
+# UPDATE MONTHLY: Choose starting and dending dates for forecast ahead period.
+start_f = '2018-08-01'
+end_f = '2019-07-01'
 
 # Load BLS payrolls data (NSA, SA, and implied SA factors).
 # Source: https://data.bls.gov/timeseries/CEU0000000001
@@ -36,7 +42,6 @@ fig.savefig('decomp.png')
 trend = decomp.trend
 seasonal = decomp.seasonal
 resid = decomp.resid
-
 
 ##########################################################################
 # Run auto ARIMA proceedure for NSA payrolls and implied BLS SA factors.
@@ -63,14 +68,13 @@ model_sa_factors = auto_arima(df.loc[start:end,'implied_sa_factors'], exogenous=
 model_sa_factors.summary()
 
 
-
 #################################################
 # Create 12-month ahead forecast of NSA payrolls. 
 #################################################
 
 # Create training and forecast data frames.
 train = df.loc[start:end,'payrolls_nsa']
-test = df.loc['2018-07-01':'2019-06-01', 'payrolls_nsa']
+test = df.loc[start_f:end_f, 'payrolls_nsa']
 
 # Fit arima model on NSA payrolls time series. 
 model_nsa.fit(train)
@@ -88,7 +92,7 @@ forecast_nsa_df = pd.DataFrame(forecast_nsa, index=test.index, columns=['predict
 
 # Create training and forecast data frames.
 train_sa_factors = df.loc[start:end,'implied_sa_factors']
-test_sa_factors = df.loc['2018-07-01':'2019-06-01', 'implied_sa_factors']
+test_sa_factors = df.loc[start_f:end_f, 'implied_sa_factors']
 
 # Fit arima model on BLS implied SA factors time series.
 model_sa_factors.fit(train_sa_factors)
@@ -98,8 +102,6 @@ forecast_sa_factors = model_sa_factors.predict(n_periods = 12)
 
 # Create forecast dataframe.
 forecast_sa_factors_df = pd.DataFrame(forecast_sa_factors, index=test.index, columns=['prediction_sa_factors'])
-
-
 
 
 ###########################################
@@ -115,4 +117,4 @@ df_forecast['forecast_sa'] = df_forecast['prediction_nsa'] - df_forecast['predic
 # Push out 12-month SA nonfarm payrolls forecast to CSV.
 df_forecast.to_csv('forecast.csv')
 
-### End ###
+### end ###
