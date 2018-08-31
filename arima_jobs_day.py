@@ -17,11 +17,11 @@ import os
 # Set working directory (CHANGE THIS FOR YOUR ENVIRONMENT)
 os.chdir('/Users/andrew.chamberlain/GitHub/jobs-day-arima-forecast')
 
-# UPDATE MONTHLY: Choose starting and dending dates for ARIMA model.
+# UPDATE MONTHLY: Choose starting and ending dates for ARIMA model.
 start = '2010-01-01'
 end = '2018-07-01'
 
-# UPDATE MONTHLY: Choose starting and dending dates for forecast ahead period.
+# UPDATE MONTHLY: Choose starting and ending dates for forecast ahead period.
 start_f = '2018-08-01'
 end_f = '2019-07-01'
 
