@@ -17,4 +17,4 @@ Author: Andrew Chamberlain, Ph.D.
 
 Glassdoor Economic Research (glassdoor.com/research)
 
-July 2018
+October 2018 
