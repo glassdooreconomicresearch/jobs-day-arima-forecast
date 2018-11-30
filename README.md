@@ -10,7 +10,7 @@ Source (SA Payrolls): https://data.bls.gov/timeseries/CES0000000001
 <b>Note:</b> First time use may require installation of pyramid.arima and statsmodels Python packages. Mac Terminal commands:
 
 <code>pip install pyramid-arima</code>
-
+ 
 <code>pip install -U statsmodels</code>
 
 Author: Andrew Chamberlain, Ph.D.
