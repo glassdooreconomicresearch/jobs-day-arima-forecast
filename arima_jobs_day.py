@@ -7,7 +7,7 @@
 # Glassdoor Economic Research 
 # Web: glassdoor.com/research
 # ORIGINAL: July 2018
-# LAST UPDATE: April 25, 2019
+# LAST UPDATE: May 23, 2019
 
 import pandas as pd
 from statsmodels.tsa.seasonal import seasonal_decompose
@@ -19,11 +19,11 @@ os.chdir('/Users/andrew.chamberlain/GitHub/jobs-day-arima-forecast')
 
 # UPDATE MONTHLY: Choose starting and ending dates for ARIMA model.
 start = '2010-01-01'
-end = '2019-03-01'
+end = '2019-04-01'
 
 # UPDATE MONTHLY: Choose starting and ending dates for forecast ahead period.
-start_f = '2019-04-01'
-end_f = '2020-03-01'
+start_f = '2019-05-01'
+end_f = '2020-04-01'
 
 # Load BLS payrolls data (NSA, SA, and implied SA factors).
 # Source: https://data.bls.gov/timeseries/CEU0000000001
