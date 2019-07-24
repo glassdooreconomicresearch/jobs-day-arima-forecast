@@ -19,11 +19,11 @@ os.chdir('/Users/andrew.chamberlain/GitHub/jobs-day-arima-forecast')
 
 # UPDATE MONTHLY: Choose starting and ending dates for ARIMA model.
 start = '2010-01-01'
-end = '2019-05-01'
+end = '2019-06-01'
 
 # UPDATE MONTHLY: Choose starting and ending dates for forecast ahead period.
-start_f = '2019-06-01'
-end_f = '2020-05-01'
+start_f = '2019-07-01'
+end_f = '2020-06-01'
 
 # Load BLS payrolls data (NSA, SA, and implied SA factors).
 # Source: https://data.bls.gov/timeseries/CEU0000000001
