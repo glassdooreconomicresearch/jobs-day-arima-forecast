@@ -15,11 +15,13 @@ Source (SA Payrolls): https://data.bls.gov/timeseries/CES0000000001
 
 ## Installation Instructions
 
-<b>Note:</b> First time use may require installation of pyramid.arima and statsmodels Python packages. Mac Terminal commands:
+<b>Note:</b> First time use may require installation of pyramid.arima, matplotlib and statsmodels Python packages. Requires Python 3.5. Mac Terminal commands:
 
 <code>pip install pyramid-arima</code>
 
 <code>pip install -U statsmodels</code>
+
+<code>pip install matplotlib</code>
 
 See `requirements.txt` for version requirements. Newer versions of statsmodels appear to be incompatible with `pyramid.arima`. Installing the exact versions required can be accomplished with the following code:
 
